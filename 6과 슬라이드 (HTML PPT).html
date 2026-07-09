@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6과 · 그리스도인이 무엇보다 먼저 할 것</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#EBE8E1;
+  --paper:#F0EDE6;
+  --ink:#20403A;          /* deep petrol teal */
+  --ink-soft:#2F534C;
+  --blue:#ABE0F1;         /* light sky blue accent */
+  --blue-deep:#6FC4E4;
+  --muted:#5B665F;
+  --line:#CFCCC2;
+  --kor:"Pretendard Variable",Pretendard,sans-serif;
+  --eng:'Archivo',"Pretendard Variable",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--kor);background:var(--bg);color:var(--ink);
+  overflow:hidden;-webkit-font-smoothing:antialiased;
+}
+/* paper grain overlay */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+
+/* ── deck ───────────────────────────── */
+.deck{position:relative;z-index:1;height:100dvh}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(30px,5.4vw,80px) clamp(30px,6vw,96px) clamp(64px,10vh,104px);
+  opacity:0;visibility:hidden;transform:translateY(16px);
+  transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s;overflow:hidden;
+}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .55s ease,transform .55s ease}
+.slide .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.slide.active .rv{opacity:1;transform:none}
+.slide.active [data-d="1"]{transition-delay:.06s}
+.slide.active [data-d="2"]{transition-delay:.15s}
+.slide.active [data-d="3"]{transition-delay:.24s}
+.slide.active [data-d="4"]{transition-delay:.33s}
+.slide.active [data-d="5"]{transition-delay:.42s}
+.slide.active [data-d="6"]{transition-delay:.51s}
+.slide.active [data-d="7"]{transition-delay:.60s}
+.inner{position:relative;z-index:2;width:100%;max-width:1180px;margin:auto}
+
+/* ── typography ─────────────────────── */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.7em;font-family:var(--eng);font-weight:700;
+  font-size:clamp(10px,1.15vw,13px);letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);
+}
+.eyebrow::before{content:"";width:clamp(20px,3vw,42px);height:2px;background:var(--ink);display:inline-block}
+.eyebrow.k{font-family:var(--kor);letter-spacing:.14em;font-weight:800}
+.eyebrow.nodash::before{content:none}
+
+h1.hero{
+  font-family:var(--kor);font-weight:900;letter-spacing:-.02em;line-height:1.16;
+  font-size:clamp(40px,9.2vw,128px);color:var(--ink);
+  word-break:keep-all;overflow-wrap:break-word;
+}
+h2.title{
+  font-family:var(--kor);font-weight:900;letter-spacing:-.02em;line-height:1.04;
+  font-size:clamp(30px,5.6vw,74px);color:var(--ink);
+}
+.title .blue,.hero .blue{
+  color:var(--ink);background:var(--blue);border-radius:.06em;padding:0 .06em;
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+.title .out{color:transparent;-webkit-text-stroke:2px var(--ink);}
+.lead{font-size:clamp(15px,2vw,22px);line-height:1.5;color:var(--muted);font-weight:600}
+.hr{height:2px;background:var(--ink);border:none;opacity:.9}
+
+/* ── cover ──────────────────────────── */
+.cover-top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+  font-family:var(--eng);font-weight:600;font-size:clamp(11px,1.25vw,15px);
+  letter-spacing:.04em;color:var(--ink-soft);
+}
+.cover-top .k{font-family:var(--kor);font-weight:700}
+.cover-mid{margin:clamp(16px,4vh,52px) 0}
+.cover-sub{margin-top:clamp(16px,3vh,30px);font-size:clamp(15px,2.1vw,25px);font-weight:700;color:var(--ink-soft)}
+.cover-bot{
+  position:absolute;left:clamp(30px,6vw,96px);right:clamp(30px,6vw,96px);bottom:clamp(64px,10vh,104px);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+}
+.cover-bot .cell b{display:block;font-family:var(--kor);font-weight:800;font-size:clamp(12px,1.35vw,16px);margin-bottom:.35em}
+.cover-bot .cell span{font-size:clamp(12px,1.4vw,17px);color:var(--muted);font-weight:600;font-family:var(--eng)}
+.cover-bot .cell.r{text-align:right}
+
+/* ── scripture ──────────────────────── */
+.scripture{width:100%;max-width:1080px;text-align:left;margin-top:clamp(14px,2.6vh,26px)}
+.scripture .v{
+  display:flex;gap:clamp(12px,1.6vw,20px);
+  font-size:clamp(15px,2.05vw,24px);line-height:1.62;font-weight:600;color:var(--ink);
+  padding:clamp(8px,1.35vh,14px) 0;border-bottom:1px solid var(--line);
+}
+.scripture .v:last-child{border-bottom:none}
+.scripture .vn{
+  font-family:var(--eng);font-weight:900;font-size:.82em;line-height:1.55;color:var(--blue-deep);
+  min-width:1.5em;flex:0 0 auto;
+}
+mark{background:var(--blue);color:var(--ink);border-radius:.14em;padding:.02em .18em;font-weight:800}
+mark.o{background:transparent;box-shadow:inset 0 -.42em 0 var(--blue)}
+
+/* ── flow chips (single row) ────────── */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(6px,1vw,12px);margin-top:clamp(16px,3vh,30px)}
+.flow .fc{
+  font-family:var(--kor);font-weight:800;font-size:clamp(12px,1.55vw,19px);color:var(--ink);
+  background:var(--paper);border:2px solid var(--ink);border-radius:99px;padding:.5em 1.05em;
+}
+.flow .fc.hi{background:var(--ink);color:var(--paper)}
+.flow .ar{font-family:var(--eng);font-weight:900;color:var(--ink-soft);font-size:clamp(13px,1.7vw,20px)}
+
+/* ── outline rows ───────────────────── */
+.rows{display:grid;gap:clamp(8px,1.4vh,13px);width:100%;margin-top:clamp(14px,2.6vh,24px)}
+.row{
+  display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:clamp(12px,2vw,26px);
+  background:var(--paper);border:2px solid var(--ink);border-radius:14px;
+  padding:clamp(11px,1.7vh,17px) clamp(16px,2.2vw,28px);
+}
+.vbadge{
+  font-family:var(--eng);font-weight:900;font-size:clamp(13px,1.6vw,19px);color:var(--paper);
+  background:var(--ink);border-radius:8px;padding:.28em .62em;white-space:nowrap;
+}
+.row .ttl{font-family:var(--kor);font-weight:900;font-size:clamp(15px,2vw,24px);color:var(--ink);white-space:nowrap}
+.row .desc{font-size:clamp(12.5px,1.55vw,18px);line-height:1.45;color:var(--muted);font-weight:600}
+
+/* ── feature list ───────────────────── */
+.feature{display:grid;gap:clamp(11px,1.9vh,18px);width:100%;max-width:1040px;margin-top:clamp(12px,2.4vh,22px);text-align:left}
+.feature li{
+  list-style:none;display:flex;gap:clamp(12px,1.8vw,20px);align-items:flex-start;
+  font-size:clamp(14.5px,1.95vw,21px);line-height:1.55;font-weight:600;color:var(--ink);
+}
+.feature .ic{
+  flex:0 0 auto;width:clamp(30px,3.4vw,44px);height:clamp(30px,3.4vw,44px);margin-top:.05em;
+  border:2px solid var(--ink);border-radius:50%;background:var(--blue);
+  display:grid;place-items:center;font-family:var(--eng);font-weight:900;font-size:clamp(13px,1.6vw,19px);color:var(--ink);
+}
+.feature b{font-weight:900}
+.feature small{display:block;font-size:.82em;color:var(--muted);font-weight:600;margin-top:.22em;line-height:1.5}
+
+/* ── prose (배경 서술) ────────────────── */
+.prose{width:100%;max-width:1020px;margin-top:clamp(16px,3vh,32px);text-align:left}
+.prose p{font-size:clamp(15px,2.05vw,24px);line-height:1.78;font-weight:600;color:var(--ink-soft)}
+.prose p+p{margin-top:.85em}
+
+/* ── key point cards (한 줄 한 칸) ─────── */
+.kcards{display:grid;grid-template-columns:1fr;gap:clamp(10px,1.7vh,16px);width:100%;margin-top:clamp(12px,2.4vh,22px)}
+.kcard{
+  display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(14px,2.4vw,30px);
+  background:var(--paper);border:2px solid var(--ink);border-radius:16px;
+  padding:clamp(13px,2vh,20px) clamp(18px,2.4vw,30px);text-align:left;
+}
+.kcard .kn{font-family:var(--eng);font-weight:900;font-size:clamp(26px,3.4vw,44px);color:var(--blue-deep);line-height:1;opacity:.9}
+.kcard .kbody h4{font-family:var(--kor);font-weight:900;font-size:clamp(16px,2.05vw,24px);margin-bottom:.22em;color:var(--ink)}
+.kcard .kbody p{font-size:clamp(13px,1.55vw,18px);line-height:1.5;color:var(--muted);font-weight:600}
+.kcard .kbody p b{color:var(--ink);font-weight:800}
+.kcard.full{background:var(--ink);border-color:var(--ink)}
+.kcard.full .kn{color:var(--blue)}
+.kcard.full .kbody h4{color:var(--paper)}
+.kcard.full .kbody p{color:#CFE0DB}
+.kcard.full .kbody p b{color:var(--blue)}
+
+/* ── compare (덮는 사랑 vs 숨기는 것) ───── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,24px);width:100%;margin-top:clamp(14px,2.6vh,26px)}
+.ccard{background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:clamp(15px,2.3vh,26px) clamp(16px,2.2vw,28px);text-align:left}
+.ccard .ch{display:flex;align-items:center;gap:.5em;font-family:var(--kor);font-weight:900;font-size:clamp(17px,2.3vw,27px);color:var(--ink);margin-bottom:clamp(10px,1.7vh,16px)}
+.ccard .mk{width:1.6em;height:1.6em;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--eng);font-weight:900;font-size:.62em;flex:0 0 auto}
+.ccard ul{list-style:none;display:grid;gap:clamp(8px,1.5vh,13px)}
+.ccard li{display:flex;gap:.6em;font-size:clamp(13px,1.62vw,19px);line-height:1.5;font-weight:600;color:var(--muted)}
+.ccard li::before{content:"";flex:0 0 auto;width:.5em;height:.5em;margin-top:.5em;border-radius:50%;background:var(--ink);opacity:.45}
+.ccard.neg .mk{background:var(--paper);color:var(--ink)}
+.ccard.pos{background:var(--ink);border-color:var(--ink)}
+.ccard.pos .ch{color:var(--paper)}
+.ccard.pos .mk{background:var(--blue);color:var(--ink);border-color:var(--blue)}
+.ccard.pos li{color:#CFE0DB}
+.ccard.pos li::before{background:var(--blue);opacity:1}
+.takeaway{
+  width:100%;margin-top:clamp(13px,2.4vh,22px);
+  background:var(--paper);border:2px solid var(--ink);border-radius:14px;
+  padding:clamp(12px,2vh,18px) clamp(16px,2.2vw,26px);
+  font-size:clamp(13.5px,1.75vw,20px);line-height:1.55;font-weight:700;color:var(--ink);text-align:left;
+}
+.takeaway b{background:var(--blue);padding:0 .14em;border-radius:.14em}
+
+/* ── big statement / question ───────── */
+.statement{
+  font-family:var(--kor);font-weight:900;letter-spacing:-.01em;
+  font-size:clamp(24px,4.4vw,60px);line-height:1.2;color:var(--ink);max-width:1100px;
+}
+.statement .blue{background:var(--blue);border-radius:.05em;padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.statement .u{border-bottom:.12em solid var(--blue-deep)}
+.qbox{
+  background:var(--paper);border:2px solid var(--ink);border-radius:20px;
+  box-shadow:8px 8px 0 var(--ink);padding:clamp(20px,4vh,42px) clamp(22px,4vw,50px);
+  max-width:1040px;text-align:left;margin-top:clamp(12px,2.4vh,22px);
+}
+.qbox .qmark{font-family:var(--eng);font-weight:900;font-size:clamp(30px,5vw,64px);color:var(--blue-deep);line-height:.7}
+.qbox .qmain{font-family:var(--kor);font-weight:800;font-size:clamp(18px,2.7vw,34px);line-height:1.4;color:var(--ink);margin:.35em 0}
+.qbox .qsub{font-size:clamp(13.5px,1.75vw,20px);color:var(--muted);font-weight:600;line-height:1.5}
+.qbox .qsub .blue{color:var(--ink);background:var(--blue);padding:0 .18em;border-radius:.14em;font-weight:800}
+.qtip{margin-top:clamp(12px,2.4vh,20px);font-size:clamp(12.5px,1.55vw,17px);color:var(--muted);font-weight:600;display:flex;gap:.6em;align-items:baseline}
+.qtip b{color:var(--ink);font-weight:800;font-family:var(--eng);letter-spacing:.06em;font-size:.9em}
+
+/* ── decorative doodles ─────────────── */
+.doodle{position:absolute;z-index:1;pointer-events:none;color:var(--ink)}
+.doodle svg{display:block;width:100%;height:100%}
+.blob{position:absolute;z-index:1;pointer-events:none;background:var(--blue);border-radius:50% 50% 48% 52%/55% 45% 55% 45%}
+.float{animation:bob 6s ease-in-out infinite alternate}
+.float2{animation:bob 8.5s ease-in-out infinite alternate-reverse}
+@keyframes bob{from{transform:translateY(0) rotate(var(--r,0deg))}to{transform:translateY(-1.4vh) rotate(var(--r,0deg))}}
+
+/* ── HUD ────────────────────────────── */
+.hud{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;align-items:center;gap:14px;padding:14px clamp(20px,4vw,50px) 16px}
+.brand{font-family:var(--eng);font-size:10.5px;font-weight:800;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
+.dots{display:flex;gap:7px;margin:0 auto}
+.dot{width:9px;height:9px;border-radius:50%;background:transparent;border:2px solid var(--ink);cursor:pointer;padding:0;transition:.25s;opacity:.42}
+.dot.on{background:var(--ink);opacity:1;transform:scale(1.15)}
+.navbtn{
+  width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:var(--paper);cursor:pointer;
+  font-size:15px;font-weight:800;color:var(--ink);display:grid;place-items:center;transition:.18s;
+}
+.navbtn:hover{background:var(--ink);color:var(--paper)}
+.count{font-family:var(--eng);font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.1em;min-width:50px;text-align:right}
+.progress{position:fixed;top:0;left:0;height:5px;background:var(--ink);z-index:7;transition:width .45s ease}
+
+/* ── responsive ─────────────────────── */
+/* 태블릿 */
+@media (max-width:1024px){
+  .slide{padding-left:clamp(28px,5vw,60px);padding-right:clamp(28px,5vw,60px)}
+  .kcards{gap:14px}
+}
+/* 좁은 화면 / 모바일 — 모든 슬라이드 세로 스크롤 허용, 내용 잘림 방지 */
+@media (max-width:768px){
+  .slide{
+    justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:clamp(26px,7vw,46px) clamp(20px,6vw,40px) clamp(74px,13vh,96px);
+  }
+  .inner{margin-block:auto}
+  .kcards{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .row{grid-template-columns:auto 1fr;row-gap:.25em}
+  .row .desc{grid-column:1 / -1}
+  .row .ttl{white-space:normal}
+  .flow{gap:6px}
+  .flow .ar{font-size:14px}
+  .brand{display:none}
+  .doodle,.blob{opacity:.45}
+  /* 표지 하단바를 흐름 배치로 — 본문과 겹치지 않게 */
+  .cover-bot{position:static;left:auto;right:auto;bottom:auto;margin-top:clamp(22px,5vh,40px)}
+  .cover-mid{margin:clamp(14px,3vh,30px) 0}
+}
+/* 소형 폰 */
+@media (max-width:430px){
+  h1.hero{font-size:clamp(44px,15.5vw,66px)}
+  h2.title{font-size:clamp(28px,7.5vw,44px)}
+  .cover-top{flex-wrap:wrap;gap:6px 14px}
+  .cover-top span{font-size:11px}
+  .cover-bot{flex-wrap:wrap;gap:14px}
+  .cover-bot .cell.r{text-align:left}
+  .qbox{box-shadow:5px 5px 0 var(--ink);padding:22px 20px}
+  .doodle,.blob{display:none}
+}
+/* 가로 눕힌 폰 등 낮은 높이 */
+@media (max-height:600px){
+  .slide{justify-content:flex-start;overflow-y:auto;padding-top:36px;padding-bottom:60px}
+}
+@media (max-height:560px) and (orientation:landscape){
+  h1.hero{font-size:clamp(40px,9vw,72px)}
+  .cover-bot{position:static;left:auto;right:auto;bottom:auto;margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="bar"></div>
+
+<main class="deck" id="deck">
+
+  <!-- 1 · 표지 -->
+  <section class="slide">
+    <!-- decorative: blue blobs + squiggle -->
+    <div class="blob float" style="right:9vw;top:20vh;width:clamp(30px,4vw,60px);height:clamp(30px,4vw,60px);--r:0deg" aria-hidden="true"></div>
+    <div class="blob float2" style="right:20vw;top:34vh;width:clamp(18px,2.4vw,36px);height:clamp(18px,2.4vw,36px)" aria-hidden="true"></div>
+    <div class="doodle float2" style="right:6vw;bottom:26vh;width:clamp(70px,10vw,150px);height:clamp(50px,7vw,110px)" aria-hidden="true">
+      <svg viewBox="0 0 150 110" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+        <path d="M8 60 C 20 30, 40 30, 48 55 S 78 85, 88 55 S 118 25, 142 48"/>
+      </svg>
+    </div>
+    <div class="doodle" style="right:8vw;bottom:20vh;width:clamp(34px,4vw,58px);height:clamp(34px,4vw,58px)" aria-hidden="true">
+      <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"><path d="M14 14 L46 46 M46 14 L14 46 M30 6 V54 M6 30 H54"/></svg>
+    </div>
+
+    <div class="inner" style="max-width:1180px">
+      <div class="cover-top rv" data-d="1">
+        <span class="k">베드로전서 인도자 가이드</span>
+        <span>GBS · LEADER GUIDE</span>
+        <span class="k">Lesson 06</span>
+      </div>
+      <div class="cover-mid">
+        <h1 class="hero rv" data-d="2">그리스도인이<br>무엇보다<br><span class="blue">먼저</span> 할 것</h1>
+      </div>
+    </div>
+    <div class="cover-bot rv" data-d="5">
+      <div class="cell"><b>본문</b><span>1 PETER 4 : 7–11</span></div>
+      <div class="cell r"><b>청년1국 GBS</b><span>2026</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · 성경 본문 -->
+  <section class="slide">
+    <div class="blob float" style="right:6vw;top:14vh;width:clamp(20px,2.6vw,40px);height:clamp(20px,2.6vw,40px)" aria-hidden="true"></div>
+    <div class="inner">
+      <span class="eyebrow rv" data-d="1">Scripture · 개역개정</span>
+      <h2 class="title rv" data-d="1" style="margin-top:.4em">베드로전서 <span class="blue">4 : 7–11</span></h2>
+      <div class="scripture">
+        <div class="v rv" data-d="2"><span class="vn">7</span><span>만물의 마지막이 가까이 왔으니 그러므로 너희는 정신을 차리고 근신하여 기도하라</span></div>
+        <div class="v rv" data-d="3"><span class="vn">8</span><span>무엇보다도 뜨겁게 서로 사랑할지니 사랑은 허다한 죄를 덮느니라</span></div>
+        <div class="v rv" data-d="4"><span class="vn">9</span><span>서로 대접하기를 원망 없이 하고</span></div>
+        <div class="v rv" data-d="5"><span class="vn">10</span><span>각각 은사를 받은 대로 하나님의 여러 가지 은혜를 맡은 선한 청지기 같이 서로 봉사하라</span></div>
+        <div class="v rv" data-d="6"><span class="vn">11</span><span>만일 누가 말하려면 하나님의 말씀을 하는 것 같이 하고 누가 봉사하려면 하나님이 공급하시는 힘으로 하는 것 같이 하라 이는 범사에 예수 그리스도로 말미암아 하나님이 영광을 받으시게 하려 함이니 그에게 영광과 권능이 세세에 무궁하도록 있느니라 아멘</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · 단락 구분 -->
+  <section class="slide" style="justify-content:flex-start;overflow-y:auto">
+    <div class="inner">
+      <span class="eyebrow rv" data-d="1">Outline · 구조와 단락 구분</span>
+      <h2 class="title rv" data-d="1" style="margin-top:.35em;font-size:clamp(26px,4.6vw,58px)">5개의 <span class="blue">분절</span></h2>
+      <div class="rows">
+        <div class="row rv" data-d="2"><span class="vbadge">7절</span><span class="ttl">깨어 기도하라</span><span class="desc">만물의 마지막이 가까웠으니 정신 차리고 근신하여 기도하라 — 종말을 사는 신자의 첫 부름</span></div>
+        <div class="row rv" data-d="3"><span class="vbadge">8절</span><span class="ttl">뜨겁게 사랑하라</span><span class="desc">기도에 이어, 무엇보다 뜨거운 서로 사랑이 허다한 죄를 덮는다</span></div>
+        <div class="row rv" data-d="4"><span class="vbadge">9절</span><span class="ttl">원망 없이 대접하라</span><span class="desc">사랑은 마지못함·불평이 아니라 기꺼운 환대로 드러난다</span></div>
+        <div class="row rv" data-d="5"><span class="vbadge">10절</span><span class="ttl">은사로 섬기라</span><span class="desc">받은 은사를 하나님의 은혜를 맡은 선한 청지기로 서로를 위해 사용하라</span></div>
+        <div class="row rv" data-d="6"><span class="vbadge">11절</span><span class="ttl">범사에 하나님께 영광</span><span class="desc">말이든 섬김이든 하나님이 주신 힘으로 — 예수 그리스도로 하나님이 영광 받으시게</span></div>
+      </div>
+      <div class="flow rv" data-d="7">
+        <span class="fc hi">깨어 기도</span><span class="ar">→</span>
+        <span class="fc">서로 사랑</span><span class="ar">→</span>
+        <span class="fc">기꺼이 섬김</span><span class="ar">→</span>
+        <span class="fc hi">하나님의 영광</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · 본문의 배경과 흐름 -->
+  <section class="slide">
+    <div class="doodle float" style="left:4vw;bottom:14vh;width:clamp(50px,7vw,110px);height:clamp(36px,5vw,80px)" aria-hidden="true">
+      <svg viewBox="0 0 110 80" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M6 40 C 16 18, 30 18, 38 38 S 62 62, 72 38 S 96 18, 104 34"/></svg>
+    </div>
+    <div class="inner">
+      <span class="eyebrow rv" data-d="1">Context · 본문의 배경과 흐름</span>
+      <h2 class="title rv" data-d="1" style="margin-top:.35em;font-size:clamp(26px,4.6vw,56px)">마지막 때를 <span class="blue">사는 사람</span></h2>
+      <div class="prose">
+        <p class="rv" data-d="2">오늘 본문은 바로 앞 단락(4:1–6)에서 곧바로 이어집니다. 베드로는 그리스도의 고난에 동참할 각오로 무장하여 육체의 남은 때를 하나님의 뜻대로 살라고 권면한 뒤, 마침내 ‘만물의 마지막이 가까이 왔다’고 선언합니다(7절). 이 말은 단순히 시간이 임박했다는 뜻만은 아닙니다. 왜냐하면 예수님이 오신 이후를 사는 우리는 이미 마지막 때를 살아가는 사람들이기 때문입니다.</p>
+        <p class="rv" data-d="3">죽음을 앞둔 사람이 이전과 전혀 다른 모습으로 살아가듯, 마지막을 인식한 신자의 삶도 달라져야 할 것입니다. 그러므로 베드로는 종말을 사는 신자가 ‘무엇보다 먼저’ 해야 할 것을 차례로 제시하며, 그 모든 권면이 결국 하나님의 영광으로 귀결됨을 보여 줍니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · 핵심 포인트 (연구와 묵상) -->
+  <section class="slide" style="justify-content:flex-start;overflow-y:auto">
+    <div class="inner">
+      <span class="eyebrow rv" data-d="1">Key Insight · 연구와 묵상</span>
+      <h2 class="title rv" data-d="1" style="margin-top:.35em;font-size:clamp(26px,4.6vw,56px)">우선순위가 <span class="blue">삶을 바꾼다</span></h2>
+      <div class="kcards">
+        <div class="kcard rv" data-d="2">
+          <div class="kn">01</div>
+          <div class="kbody">
+            <h4>두 방향의 우선순위</h4>
+            <p>하나님을 향해서는 <b>깨어 기도</b>(7절), 사람을 향해서는 <b>무엇보다 뜨거운 사랑</b>(8절). 마지막 때 신자가 가장 먼저 붙들 두 자리다.</p>
+          </div>
+        </div>
+        <div class="kcard rv" data-d="3">
+          <div class="kn">02</div>
+          <div class="kbody">
+            <h4>덮는 사랑 ≠ 숨기는 것</h4>
+            <p>“사랑은 허다한 죄를 덮느니라.” 예수님이 우리 죄를 대신 지셨듯 <b>형제의 허물을 함께 아파하며 회복하도록 곁에 서는 것</b>. 묵인이 아니다.</p>
+          </div>
+        </div>
+        <div class="kcard rv" data-d="4">
+          <div class="kn">03</div>
+          <div class="kbody">
+            <h4>사랑의 구체적 얼굴</h4>
+            <p>추상적 감정이 아니라 <b>원망 없는 대접</b>(9절)과 <b>은사를 따른 섬김</b>(10절)으로 흘러나온다. 은사는 내 소유가 아니라 맡겨진 <b>청지기의 몫</b>.</p>
+          </div>
+        </div>
+        <div class="kcard full rv" data-d="5">
+          <div class="kn">04</div>
+          <div class="kbody">
+            <h4>모든 것의 궁극 목적 — 하나님의 영광</h4>
+            <p>기도·사랑·대접·섬김은 그 자체가 목적이 아니라 <b>하나님께 영광을 돌리는 통로</b>다. 그리고 이 모든 것은 내 능력이 아니라 <b>‘하나님이 공급하시는 힘으로’</b> 가능하다(11절).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · 덮는 사랑 vs 숨기는 것 -->
+  <section class="slide" style="justify-content:flex-start;overflow-y:auto">
+    <div class="blob float2" style="right:6vw;top:13vh;width:clamp(18px,2.4vw,36px);height:clamp(18px,2.4vw,36px)" aria-hidden="true"></div>
+    <div class="inner">
+      <span class="eyebrow rv" data-d="1">Deep Dive · 사랑은 허다한 죄를 덮느니라 (8절)</span>
+      <h2 class="title rv" data-d="1" style="margin-top:.35em;font-size:clamp(26px,4.6vw,56px)">덮는 사랑 <span class="blue">vs</span> 숨기는 것</h2>
+      <div class="compare">
+        <div class="ccard neg rv" data-d="2">
+          <div class="ch"><span class="mk">✕</span>숨기는 것</div>
+          <ul>
+            <li>죄를 그대로 둔 채 못 본 척 덮어 버린다</li>
+            <li>허물이 방치되어, 형제는 그 죄에 그대로 머문다</li>
+            <li>관계의 불편을 피하려는 회피 — 사랑이 아니다</li>
+          </ul>
+        </div>
+        <div class="ccard pos rv" data-d="3">
+          <div class="ch"><span class="mk">✓</span>덮는 사랑</div>
+          <ul>
+            <li>정죄의 자리에 세우지 않으면서, 죄에서 벗어나도록 곁에 선다</li>
+            <li>예수님이 우리 죄를 대신 지셨듯, 함께 아파하며 회복을 구체적으로 돕는다</li>
+            <li>소문내지 않고, 약점을 들추지 않으며, 끝까지 포기하지 않는다</li>
+          </ul>
+        </div>
+      </div>
+      <div class="takeaway rv" data-d="4">숨김은 죄를 <b>방치</b>하고, 덮음은 사람을 <b>회복</b>시킵니다 — 예수님의 덮는 사랑을 받아 본 자가, 이제 그 사랑을 누군가에게 흘려보냅니다.</div>
+    </div>
+  </section>
+
+  <!-- 7 · 나눔 질문 -->
+  <section class="slide">
+    <div class="blob float2" style="left:7vw;top:16vh;width:clamp(22px,2.8vw,44px);height:clamp(22px,2.8vw,44px)" aria-hidden="true"></div>
+    <div class="doodle float" style="right:6vw;top:15vh;width:clamp(40px,4.6vw,66px);height:clamp(40px,4.6vw,66px)" aria-hidden="true">
+      <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"><path d="M30 6 V54 M6 30 H54 M12 12 L48 48 M48 12 L12 48"/></svg>
+    </div>
+    <div class="inner" style="display:flex;flex-direction:column;align-items:flex-start">
+      <span class="eyebrow k rv" data-d="1">함께 나눔 · 무엇을 먼저 두고 사는가</span>
+      <div class="qbox rv" data-d="2">
+        <div class="qmain">만약 오늘이 당신의 마지막 날이라는 것을 알게 된다면,<br>당신의 하루 속에서 <span style="background:var(--blue);padding:0 .12em;border-radius:.12em">우선순위</span>에서 무엇이 가장 먼저 바뀌었을까요?</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · 핵심 한 문장 -->
+  <section class="slide">
+    <div class="blob float" style="right:10vw;top:22vh;width:clamp(30px,3.6vw,56px);height:clamp(30px,3.6vw,56px)" aria-hidden="true"></div>
+    <div class="doodle float2" style="left:6vw;bottom:20vh;width:clamp(60px,8vw,130px);height:clamp(40px,5vw,90px)" aria-hidden="true">
+      <svg viewBox="0 0 130 90" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M6 46 C 18 20, 34 20, 44 46 S 74 72, 86 46 S 114 22, 124 40"/></svg>
+    </div>
+    <div class="inner" style="text-align:center">
+      <span class="eyebrow nodash rv" data-d="1">The One Line · 핵심 한 문장</span>
+      <p class="statement rv" data-d="2" style="margin-top:clamp(14px,3vh,30px);margin-inline:auto">
+        마지막 때를 사는 그리스도인이 <span class="blue">무엇보다 먼저</span> 할 것은 깨어 기도하고, 뜨겁게 사랑하며, 기꺼이 섬겨 <span class="u">범사에 하나님이 영광을 받게</span> 해야 합니다.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<nav class="hud">
+  <span class="brand">1 Peter · Lesson 06</span>
+  <div class="dots" id="dots"></div>
+  <button class="navbtn" id="prev" aria-label="이전">←</button>
+  <button class="navbtn" id="next" aria-label="다음">→</button>
+  <span class="count" id="count">1 / 7</span>
+</nav>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dotsBox=document.getElementById('dots');
+const bar=document.getElementById('bar');
+const count=document.getElementById('count');
+let cur=0;
+slides.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='dot';d.setAttribute('aria-label','슬라이드 '+(i+1));
+  d.onclick=()=>go(i);
+  dotsBox.appendChild(d);
+});
+const dots=[...dotsBox.children];
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===cur));
+  dots.forEach((d,k)=>d.classList.toggle('on',k===cur));
+  bar.style.width=((cur+1)/slides.length*100)+'%';
+  count.textContent=(cur+1)+' / '+slides.length;
+}
+document.getElementById('next').onclick=()=>go(cur+1);
+document.getElementById('prev').onclick=()=>go(cur-1);
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}
+  if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}
+  if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
+});
+let tx=0,ty=0;
+addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>56&&Math.abs(dx)>Math.abs(dy)*1.4) go(cur+(dx<0?1:-1));
+},{passive:true});
+go(0);
+</script>
+</body>
+</html>
