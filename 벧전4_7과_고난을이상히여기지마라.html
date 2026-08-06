@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7과 · 그리스도인으로서 받는 고난을 이상히 여기지 마라</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Archivo:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+:root{
+  --cream:#FBFAF4;
+  --brown:#8B7562;
+  --brown-deep:#6E5B4B;
+  --brown-soft:#A9927D;
+  --line:rgba(139,117,98,.28);
+  --mark:rgba(139,117,98,.17);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#EFEDE4;overflow:hidden}
+body{
+  font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  color:var(--brown);
+  display:flex;align-items:center;justify-content:center;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- 16:9 stage ---------- */
+#viewport{position:relative;width:100vw;height:100vh;overflow:hidden}
+#stage{
+  position:absolute;top:50%;left:50%;
+  width:1280px;height:720px;
+  transform-origin:center center;
+}
+.slide{
+  position:absolute;inset:0;
+  background:var(--cream);
+  padding:64px 80px;
+  display:none;
+  overflow:hidden;
+}
+.slide.active{display:block}
+
+/* ---------- 공통 요소 ---------- */
+.label{
+  font-family:'EB Garamond',serif;
+  font-style:italic;
+  color:var(--brown-soft);
+  letter-spacing:.01em;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:15px;letter-spacing:.22em;font-weight:600;
+  color:var(--brown-soft);text-transform:uppercase;
+}
+.eyebrow .bar{width:46px;height:2px;background:var(--brown-soft);display:block}
+
+.meta{
+  position:absolute;top:64px;right:80px;
+  text-align:left;
+  font-size:17px;line-height:2.05;
+  letter-spacing:.005em;
+}
+
+.pagenum{
+  position:absolute;left:80px;bottom:48px;
+  font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:13px;letter-spacing:.2em;color:var(--brown-soft);
+}
+.footmark{
+  position:absolute;right:80px;bottom:48px;
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:15px;color:var(--brown-soft);
+}
+
+h1.big{
+  font-weight:900;
+  font-size:92px;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  color:var(--brown);
+}
+
+/* ---------- 1. 표지 ---------- */
+#s1 .cover-title{
+  position:absolute;left:0;right:0;top:0;bottom:0;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:0 80px;
+}
+#s1 h1.big{font-size:92px;letter-spacing:.035em;line-height:1.16}
+
+/* ---------- 2. 본문 전문 ---------- */
+.head{
+  display:flex;align-items:baseline;gap:16px;
+  border-bottom:1.5px solid var(--line);
+  padding-bottom:18px;margin-bottom:30px;
+}
+.head .ttl{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--brown-deep)}
+.head .sub{font-family:'EB Garamond',serif;font-style:italic;font-size:19px;color:var(--brown-soft)}
+
+.scripture{
+  column-count:2;column-gap:56px;
+  column-rule:1px solid rgba(139,117,98,.18);
+}
+.v{
+  display:block;
+  break-inside:avoid;
+  margin-bottom:22px;
+  font-size:20.5px;line-height:1.78;
+  letter-spacing:-.015em;
+  color:var(--brown-deep);
+  text-indent:-28px;padding-left:28px;
+  word-break:keep-all;
+}
+.v .n{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:15px;color:var(--brown-soft);
+  margin-right:9px;vertical-align:1px;
+}
+
+/* ---------- 3. 강조 슬라이드 ---------- */
+.focus{margin-top:14px}
+.focus .v{
+  font-size:38px;line-height:1.62;
+  letter-spacing:-.032em;
+  margin-bottom:46px;
+  text-indent:-50px;padding-left:50px;
+  font-weight:500;
+}
+.focus .v .n{font-size:24px;margin-right:16px;vertical-align:3px}
+mark{
+  background:var(--mark);
+  color:var(--brown-deep);
+  font-weight:800;
+  padding:.06em .16em;
+  border-radius:2px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.keys{
+  position:absolute;left:80px;bottom:104px;right:80px;
+  display:flex;gap:44px;align-items:center;
+  border-top:1.5px solid var(--line);padding-top:20px;
+}
+.keys .k{font-size:23px;font-weight:800;letter-spacing:-.02em;color:var(--brown)}
+.keys .k .label{font-size:17px;margin-right:8px}
+
+/* ---------- 4. 두 가지 측면 ---------- */
+.points{margin-top:62px;display:flex;flex-direction:column;gap:58px}
+.point{display:flex;align-items:center;gap:24px}
+.point .num{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:34px;line-height:1;letter-spacing:-.04em;
+  color:var(--brown-soft);flex:0 0 auto;
+  padding-right:24px;border-right:2px solid var(--line);
+}
+.point .txt{
+  flex:1;
+  font-size:39px;line-height:1.48;letter-spacing:-.032em;
+  font-weight:700;color:var(--brown-deep);
+  word-break:keep-all;
+}
+.point .txt em{font-style:normal;font-weight:900;color:var(--brown);border-bottom:3px solid var(--mark)}
+.point .tag{
+  margin-top:14px;font-family:'EB Garamond',serif;font-style:italic;
+  font-size:20px;color:var(--brown-soft);
+}
+.sep{height:1px;background:var(--line)}
+
+/* ---------- 5. 원어 ---------- */
+.words{margin-top:40px;display:flex;flex-direction:column;gap:30px}
+.word{
+  border:1.5px solid var(--line);
+  border-radius:4px;
+  padding:34px 38px;
+  display:flex;gap:40px;align-items:flex-start;
+}
+.word .lead{flex:0 0 360px;border-right:1px solid var(--line);padding-right:32px}
+.word .ko{font-size:31px;font-weight:900;letter-spacing:-.03em;color:var(--brown-deep)}
+.word .arrow{font-family:'Archivo',sans-serif;color:var(--brown-soft);margin:0 10px;font-weight:600}
+.word .gr{
+  margin-top:8px;
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:29px;color:var(--brown-soft);
+}
+.word .desc{flex:1;padding-top:2px}
+.word .desc .m{font-size:24px;font-weight:700;letter-spacing:-.022em;color:var(--brown-deep);margin-bottom:12px}
+.word .desc .d{font-size:20.5px;line-height:1.7;letter-spacing:-.018em;color:var(--brown)}
+
+/* ---------- 7. 세 가지 고난 ---------- */
+.triple{margin-top:54px;display:flex;flex-direction:column}
+.tri{
+  display:flex;align-items:center;gap:40px;
+  border-top:1.5px solid var(--line);
+  padding:30px 4px;
+}
+.tri:last-child{border-bottom:1.5px solid var(--line)}
+.tri .n{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:36px;line-height:1;letter-spacing:-.04em;
+  color:var(--brown-soft);flex:0 0 96px;
+}
+.tri .t{
+  font-size:36px;font-weight:800;line-height:1.3;
+  letter-spacing:-.035em;color:var(--brown-deep);
+}
+.tri.on{padding:34px 4px}
+.tri.on .n{color:var(--brown)}
+.tri.on .t{color:var(--brown);font-size:40px}
+.tri.on .t span{background:var(--mark);padding:.04em .12em;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* ---------- 9·10. 본문 중앙 배치 ---------- */
+.center-wrap{
+  position:absolute;left:80px;right:80px;top:150px;bottom:112px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.center-wrap .v{
+  margin-bottom:0;font-weight:600;
+  color:var(--brown-deep);
+  text-indent:-56px;padding-left:56px;
+}
+.center-wrap .v .n{font-size:26px;margin-right:18px;vertical-align:4px}
+.qhead{
+  font-size:30px;font-weight:700;letter-spacing:-.028em;
+  color:var(--brown-soft);margin-top:22px;
+}
+
+/* ---------- 해설 블록 ---------- */
+.note{
+  margin-top:52px;
+  border-top:1.5px solid var(--line);
+  padding-top:32px;
+  font-size:26px;line-height:1.6;
+  letter-spacing:-.025em;color:var(--brown);
+  word-break:keep-all;
+}
+.note strong{font-weight:800;color:var(--brown-deep);background:var(--mark);padding:.04em .12em;border-radius:2px}
+
+.fnote{
+  position:absolute;left:80px;right:80px;bottom:86px;
+  font-size:16px;line-height:1.6;letter-spacing:-.015em;
+  color:var(--brown-soft);word-break:keep-all;
+}
+
+/* ---------- 8. 차트 ---------- */
+.chart-head{
+  font-size:24px;font-weight:700;line-height:1.55;
+  letter-spacing:-.028em;color:var(--brown-deep);margin-top:22px;
+}
+.chart-head b{font-weight:900;color:var(--brown)}
+.unit{
+  margin-top:14px;text-align:right;
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:15px;color:var(--brown-soft);
+}
+.chart{
+  margin-top:6px;height:250px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:44px;
+  align-items:end;padding:0 30px;
+  border-bottom:1.5px solid var(--line);
+}
+.bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.bar .val{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:21px;letter-spacing:-.02em;color:var(--brown-soft);margin-bottom:9px;
+}
+.bar .col{width:100%;max-width:104px;background:var(--brown-soft);opacity:.42;border-radius:3px 3px 0 0}
+.bar.hi .col{opacity:1;background:var(--brown)}
+.bar.hi .val{color:var(--brown-deep);font-size:26px}
+.xaxis{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:44px;
+  padding:16px 30px 0;text-align:center;
+  font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--brown);
+}
+.xaxis .hi{font-weight:900;color:var(--brown-deep)}
+.source{
+  position:absolute;left:80px;right:80px;bottom:84px;
+  border-top:1px solid var(--line);padding-top:14px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:30px;
+  font-size:13.5px;line-height:1.75;color:var(--brown-soft);letter-spacing:-.01em;
+}
+.source .cite{font-family:'EB Garamond',serif;font-style:italic;font-size:14px;white-space:nowrap}
+
+/* ---------- 11. 핵심 ---------- */
+.core{display:flex;flex-direction:column;gap:26px}
+.core .hero{
+  font-size:48px;font-weight:900;line-height:1.36;
+  letter-spacing:-.04em;color:var(--brown-deep);
+}
+.core .line{
+  display:flex;gap:24px;align-items:center;
+  font-size:38px;font-weight:700;line-height:1.42;
+  letter-spacing:-.032em;color:var(--brown-deep);
+  word-break:keep-all;
+}
+.core .line .dot{flex:0 0 42px;height:3px;background:var(--brown-soft)}
+
+/* ---------- nav ---------- */
+#nav{
+  position:fixed;right:22px;bottom:18px;
+  display:flex;gap:8px;align-items:center;
+  font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.14em;
+  color:#9A8874;opacity:.55;
+}
+#nav button{
+  border:1px solid rgba(139,117,98,.4);background:transparent;color:inherit;
+  width:26px;height:24px;border-radius:3px;cursor:pointer;font-size:12px;
+}
+#nav button:hover{background:rgba(139,117,98,.12)}
+
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{overflow:visible;background:#fff}
+  #viewport{width:auto;height:auto}
+  #stage{position:static;transform:none;width:1280px;height:auto}
+  .slide{position:static;display:block!important;page-break-after:always;width:1280px;height:720px}
+  #nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="viewport">
+<div id="stage">
+
+  <!-- ============ 1. 표지 ============ -->
+  <section class="slide active" id="s1">
+    <div class="meta">
+      <div>베드로전서 4:12–19</div>
+      <div>고난 · 연단 · 참여</div>
+      <div>Lesson 07</div>
+    </div>
+
+    <div class="cover-title">
+      <h1 class="big">그리스도인으로서 받는<br>고난을 이상히 여기지 마라</h1>
+    </div>
+
+    <div class="footmark">1 Peter 4:12–19</div>
+  </section>
+
+  <!-- ============ 2. 본문 전문 ============ -->
+  <section class="slide" id="s2">
+    <div class="head">
+      <span class="ttl">베드로전서 4:12–19</span>
+      <span class="sub">1 Peter 4:12–19</span>
+    </div>
+
+    <div class="scripture">
+      <span class="v"><span class="n">12</span>사랑하는 자들아 너희를 연단하려고 오는 불 시험을 이상한 일 당하는 것 같이 이상히 여기지 말고</span>
+      <span class="v"><span class="n">13</span>오히려 너희가 그리스도의 고난에 참여하는 것으로 즐거워하라 이는 그의 영광을 나타내실 때에 너희로 즐거워하고 기뻐하게 하려 함이라</span>
+      <span class="v"><span class="n">14</span>너희가 그리스도의 이름으로 치욕을 당하면 복 있는 자로다 영광의 영 곧 하나님의 영이 너희 위에 계심이라</span>
+      <span class="v"><span class="n">15</span>너희 중에 누구든지 살인이나 도둑질이나 악행이나 남의 일을 간섭하는 자로 고난을 받지 말려니와</span>
+      <span class="v"><span class="n">16</span>만일 그리스도인으로 고난을 받으면 부끄러워하지 말고 도리어 그 이름으로 하나님께 영광을 돌리라</span>
+      <span class="v"><span class="n">17</span>하나님의 집에서 심판을 시작할 때가 되었나니 만일 우리에게 먼저 하면 하나님의 복음을 순종하지 아니하는 자들의 그 마지막은 어떠하며</span>
+      <span class="v"><span class="n">18</span>또 의인이 겨우 구원을 받으면 경건하지 아니한 자와 죄인은 어디에 서리요</span>
+      <span class="v"><span class="n">19</span>그러므로 하나님의 뜻대로 고난을 받는 자들은 또한 선을 행하는 가운데에 그 영혼을 미쁘신 창조주께 의탁할지어다</span>
+    </div>
+
+    <div class="pagenum">02</div>
+    <div class="footmark">개역개정</div>
+  </section>
+
+  <!-- ============ 3. 강조 ============ -->
+  <section class="slide" id="s3">
+    <div class="eyebrow"><span class="bar"></span>베드로전서 4:12–13</div>
+
+    <div class="focus" style="margin-top:38px">
+      <span class="v"><span class="n">12</span>사랑하는 자들아 너희를 연단하려고 오는 <mark>불 시험</mark>을 이상한 일 당하는 것 같이 이상히 여기지 말고</span>
+      <span class="v"><span class="n">13</span>오히려 <mark>너희가 그리스도의 고난에 참여</mark>하는 것으로 즐거워하라 이는 그의 영광을 나타내실 때에 너희로 즐거워하고 기뻐하게 하려 함이라</span>
+    </div>
+
+    <div class="keys">
+      <div class="k"><span class="label">(1)</span>불 시험</div>
+      <div class="k"><span class="label">(2)</span>그리스도의 고난에 참여</div>
+    </div>
+
+    <div class="pagenum">03</div>
+  </section>
+
+  <!-- ============ 4. 두 가지 측면 ============ -->
+  <section class="slide" id="s4">
+    <div class="eyebrow"><span class="bar"></span>본문의 두 가지 축</div>
+
+    <h1 class="big" style="font-size:30px;font-weight:700;line-height:1.34;letter-spacing:-.02em;color:var(--brown-soft);margin-top:22px">베드로가 말하는<br>고난을 당하는 두 가지 측면</h1>
+
+    <div class="points">
+      <div class="point">
+        <span class="num">01</span>
+        <div class="txt">우리의 고난은 우리를 <em>파괴시키는 것이 아니라</em><br>정련시킨다는 것이다. 곧 <em>연단의 불</em>이다.</div>
+      </div>
+
+      <div class="sep"></div>
+
+      <div class="point">
+        <span class="num">02</span>
+        <div class="txt">그리스도를 위한 우리의 고난은<br><em>예수 그리스도의 고난</em>에서 의미를 발견한다.</div>
+      </div>
+    </div>
+
+    <div class="pagenum">04</div>
+  </section>
+
+  <!-- ============ 5. 원어 ============ -->
+  <section class="slide" id="s5">
+    <div class="eyebrow"><span class="bar"></span>원어 살펴보기 · 베드로전서 4:12</div>
+
+    <h1 class="big" style="font-size:48px;margin-top:22px">불 시험</h1>
+
+    <div class="words">
+      <div class="word">
+        <div class="lead">
+          <div class="ko">불<span class="arrow">→</span>퓌로시스</div>
+          <div class="gr">πύρωσις</div>
+        </div>
+        <div class="desc">
+          <div class="m">불태움, 연소, 불에 달구다는 의미를 갖는다.</div>
+          <div class="d">불같이 맹렬한 시련을 뜻함.</div>
+        </div>
+      </div>
+
+      <div class="word">
+        <div class="lead">
+          <div class="ko">시험<span class="arrow">→</span>프로스 페이라스몬</div>
+          <div class="gr">πρὸς πειρασμόν</div>
+        </div>
+        <div class="desc">
+          <div class="m">“시험을 위하여”, 검증을 위하여</div>
+          <div class="d">금속을 용광로에 넣어 불순물을 제거하는 것처럼<br>사람의 믿음을 드러내고 정련시키는 것을 의미.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagenum">05</div>
+  </section>
+
+  <!-- ============ 6. 고난에 참여 ============ -->
+  <section class="slide" id="s6">
+    <div class="eyebrow"><span class="bar"></span>베드로전서 4:13–14</div>
+
+    <h1 class="big" style="font-size:44px;margin-top:22px">그리스도의 고난에 참여</h1>
+
+    <div class="focus" style="margin-top:40px">
+      <span class="v" style="font-size:32px;margin-bottom:34px"><span class="n">13</span>오히려 <mark>너희가 그리스도의 고난에 참여</mark>하는 것으로 즐거워하라 이는 그의 영광을 나타내실 때에 너희로 즐거워하고 기뻐하게 하려 함이라</span>
+      <span class="v" style="font-size:32px;margin-bottom:0"><span class="n">14</span>너희가 <mark>그리스도의 이름으로 치욕</mark>을 당하면 복 있는 자로다 영광의 영 곧 하나님의 영이 너희 위에 계심이라</span>
+    </div>
+
+    <div class="pagenum">06</div>
+  </section>
+
+  <!-- ============ 7. 세 가지 고난 ============ -->
+  <section class="slide" id="s7">
+    <div class="eyebrow"><span class="bar"></span>고난의 분별</div>
+
+    <h1 class="big" style="font-size:46px;margin-top:24px">고난이라고<br>다 같은 고난이 아니다.</h1>
+
+    <div class="triple">
+      <div class="tri">
+        <span class="n">01</span>
+        <div class="t">일반적인 고난</div>
+      </div>
+      <div class="tri">
+        <span class="n">02</span>
+        <div class="t">부끄러운 고난</div>
+      </div>
+      <div class="tri on">
+        <span class="n">03</span>
+        <div class="t"><span>그리스도의 이름</span>으로 인한 고난</div>
+      </div>
+    </div>
+
+    <div class="pagenum">07</div>
+  </section>
+
+  <!-- ============ 8. 부끄러운 고난 ============ -->
+  <section class="slide" id="s8">
+    <div class="eyebrow"><span class="bar"></span>베드로전서 4:15, 18</div>
+
+    <h1 class="big" style="font-size:44px;margin-top:22px">부끄러운 고난</h1>
+
+    <div class="focus" style="margin-top:44px">
+      <span class="v" style="font-size:32px;margin-bottom:36px"><span class="n">15</span>너희 중에 누구든지 살인이나 도둑질이나 악행이나 남의 일을 간섭하는 자로 고난을 받지 말려니와</span>
+      <span class="v" style="font-size:32px;margin-bottom:0"><span class="n">18</span>또 의인이 겨우 구원을 받으면 경건하지 아니한 자와 죄인은 어디에 서리요</span>
+    </div>
+
+    <div class="pagenum">08</div>
+    <div class="footmark">개역개정</div>
+  </section>
+
+  <!-- ============ 9. 종교 호감도 ============ -->
+  <section class="slide" id="s9">
+    <div class="eyebrow"><span class="bar"></span>부끄러워지는 고난</div>
+
+    <div class="chart-head">
+      불교(54.4점), 천주교(52.7점)는 보통 이상의 호감…<br>
+      <b>개신교 호감도는 34.7점</b>으로 불교·천주교 대비 낮아
+    </div>
+
+    <div class="unit">(단위 : 점)</div>
+
+    <div class="chart">
+      <div class="bar"><span class="val">54.4</span><div class="col" style="height:190px"></div></div>
+      <div class="bar"><span class="val">52.7</span><div class="col" style="height:184px"></div></div>
+      <div class="bar hi"><span class="val">34.7</span><div class="col" style="height:121px"></div></div>
+      <div class="bar"><span class="val">30.3</span><div class="col" style="height:106px"></div></div>
+      <div class="bar"><span class="val">16.3</span><div class="col" style="height:57px"></div></div>
+    </div>
+    <div class="xaxis">
+      <div>불교</div><div>천주교</div><div class="hi">개신교</div><div>원불교</div><div>이슬람교</div>
+    </div>
+
+    <div class="source">
+      <div>
+        질문 : 다음 각 종교에 대해 여러분이 평소 느끼고 있는 감정을 0도에서 100도 사이로 표시해주세요.<br>
+        응답자 수 : 2,000명 &nbsp;·&nbsp; 조사기간 : 2025. 11. 21 ~ 26
+      </div>
+      <div class="cite">한국리서치 정기조사 「여론 속의 여론」</div>
+    </div>
+
+    <div class="pagenum">09</div>
+  </section>
+
+  <!-- ============ 10. 심판의 엄중함 ============ -->
+  <section class="slide" id="s10">
+    <div class="eyebrow"><span class="bar"></span>베드로전서 4:17</div>
+
+    <h1 class="big" style="font-size:44px;margin-top:22px">심판의 엄중함</h1>
+
+    <div class="focus" style="margin-top:42px">
+      <span class="v" style="font-size:32px;margin-bottom:0"><span class="n">17</span><mark>하나님의 집</mark>에서 심판을 시작할 때가 되었나니 만일 우리에게 먼저 하면 하나님의 복음을 순종하지 아니하는 자들의 그 마지막은 어떠하며</span>
+    </div>
+
+    <div class="note">
+      하나님의 자녀들도 정결하게 하는 심판을 고난 가운데 통과한다면,<br>
+      복음을 끝까지 거부한 사람들에게 임할 <strong>최종 심판은 얼마나 엄중하겠는가?</strong>
+    </div>
+
+    <div class="fnote">* “하나님의 집”은 교회 건물이 아니라, 하나님께 속한 백성의 공동체를 의미</div>
+
+    <div class="pagenum">10</div>
+    <div class="footmark">개역개정</div>
+  </section>
+
+  <!-- ============ 11. 고난의 증인 ============ -->
+  <section class="slide" id="s11">
+    <div class="eyebrow"><span class="bar"></span>베드로전서 5:1</div>
+
+    <div class="center-wrap focus" style="padding-bottom:138px">
+      <span class="v" style="font-size:44px;line-height:1.56"><span class="n">1</span>너희 중 장로들에게 권하노니 나는 함께 장로 된 자요 <mark>그리스도의 고난의 증인</mark>이요 나타날 영광에 참여할 자니라</span>
+    </div>
+
+    <div class="pagenum">11</div>
+    <div class="footmark">개역개정</div>
+  </section>
+
+  <!-- ============ 12. 왜 고난인가 ============ -->
+  <section class="slide" id="s12">
+    <div class="eyebrow"><span class="bar"></span>베드로전서 3:18</div>
+
+    <div class="qhead">왜 우리는 고난 받아야 하는가?</div>
+
+    <div class="center-wrap focus" style="top:196px;padding-bottom:118px">
+      <span class="v" style="font-size:38px;line-height:1.56"><span class="n">18</span>그리스도께서도 단번에 죄를 위하여 죽으사 <mark>의인으로서 불의한 자를 대신</mark>하셨으니 이는 우리를 하나님 앞으로 인도하려 하심이라 육체로는 죽임을 당하시고 영으로는 살리심을 받으셨으니</span>
+    </div>
+
+    <div class="pagenum">12</div>
+    <div class="footmark">개역개정</div>
+  </section>
+
+  <!-- ============ 13. 핵심 ============ -->
+  <section class="slide" id="s13">
+    <div class="eyebrow"><span class="bar"></span>마무리</div>
+
+    <h1 class="big" style="font-size:30px;font-weight:700;line-height:1.34;letter-spacing:-.02em;color:var(--brown-soft);margin-top:22px">이번 GBS에서 가장 중요한 핵심</h1>
+
+    <div class="core" style="margin-top:56px;gap:40px">
+      <div class="line"><span class="dot"></span><span>고난은 우리 신앙의 진위를 가려내는 <mark>리트머스 종이다</mark>.</span></div>
+      <div class="line"><span class="dot"></span><span>각자 인생에 대한 <mark>고난을 재해석</mark> 해야 한다.</span></div>
+      <div class="line"><span class="dot"></span><span>현재 고난 당하는 자가 <mark>소망과 영광</mark>을 붙들게 해야 한다.</span></div>
+    </div>
+
+    <div class="pagenum">13</div>
+  </section>
+
+</div>
+</div>
+
+<div id="nav">
+  <button id="prev" aria-label="이전">‹</button>
+  <span id="counter">01 / 05</span>
+  <button id="next" aria-label="다음">›</button>
+</div>
+
+<script>
+(function(){
+  var stage   = document.getElementById('stage');
+  var slides  = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var i = 0;
+
+  function fit(){
+    var s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+  }
+
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(el, k){ el.classList.toggle('active', k === i); });
+    counter.textContent = String(i+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+  }
+
+  window.addEventListener('resize', fit);
+  document.addEventListener('keydown', function(e){
+    if (['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key) > -1){ e.preventDefault(); show(i+1); }
+    if (['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key) > -1){ e.preventDefault(); show(i-1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End')  show(slides.length-1);
+  });
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('viewport').addEventListener('click', function(){ show(i+1); });
+
+  fit(); show(0);
+})();
+</script>
+</body>
+</html>
